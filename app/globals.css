@@ -4,24 +4,45 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255; */
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 2, 6, 23;
+    --background-end-rgb: 2, 6, 23;
   }
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+.closed div {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .container {
+    max-width: 95%;
+  }
+}
+
+#grid-view {
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+#grid-view-min {
+  grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+}
+
+#person-card {
+  width: 100%;
+  max-width: 12rem;
+}
+
+#cast-list {
+  grid-template-columns: repeat(6, minmax(10rem, 1fr));
 }

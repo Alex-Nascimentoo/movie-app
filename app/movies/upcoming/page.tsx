@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react"
 
-import Sidebar from "./utils/sidebar"
-import MovieCard from "./components/movieCard"
+import Sidebar from "@/app/utils/sidebar"
+import MovieCard from "@/app/components/movieCard"
 
 async function getMovieList() {
-  const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`, {
+  const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}`, {
     method: 'GET',
     headers: {
       "accept": "application/json"
@@ -25,7 +25,7 @@ interface IMovie {
   poster_path: string
 }
 
-export default function Home() {
+export default function Upcoming() {
   const [movieList, setMovieList] = useState<IMovie[]>([])
 
   const fetchMovies = async() => {
@@ -39,10 +39,10 @@ export default function Home() {
 
   return (
     <main className="container mx-auto py-7">
-      <h1 className="text-3xl font-bold">Popular Movies</h1>
+      <h1 className="text-3xl font-bold">Upcoming Movies</h1>
       <div className="content mt-5 flex flex-col gap-7 md:flex-row">
         <Sidebar />
-        <section id="grid-view" className="w-full grid gap-7 place-items-center">
+        <section className="grid grid-cols-4 gap-7">
           {
             movieList.map(movie => (
               <MovieCard
